@@ -1,0 +1,29 @@
+services:
+  caldera:
+    build:
+      context: ./caldera
+    image: caldera:latest
+    container_name: caldera
+    restart: unless-stopped
+    ports:
+      - "8443:8443"   # HTTPS (SSL Plugin/HAProxy)
+      - "7010:7010"   # TCP Agent Contact
+      - "7011:7011/udp" # UDP Agent Contact
+      - "7012:7012"   # WebSocket Agent Contact
+      - "2222:2222"   # SSH Agent Contact
+      - "8853:8853/udp" # DNS Agent Contact
+    volumes:
+      - ./outputs/local.yml:/usr/src/app/conf/local.yml
+      - ./outputs/haproxy.conf:/usr/src/app/plugins/ssl/conf/haproxy.conf
+      - ./outputs/certificate.pem:/usr/src/app/plugins/ssl/conf/certificate.pem
+
+  webapp:
+    build:
+      context: ./webapp
+    image: webapp:latest
+    container_name: webapp
+    restart: unless-stopped
+    depends_on:
+      - caldera
+    ports:
+      - "8080:8080"   # Netcat Webapp

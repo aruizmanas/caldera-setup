@@ -1,0 +1,60 @@
+ability_refresh: 60
+api_key_blue: $argon2id$v=19$m=65536,t=3,p=4$h4gz/omRRkBIcP0YCU+Pvw$AE3ZEn6CNRgshBVN/eN18v3sh9JqIIeKkBrlWHQkp8c
+api_key_red: $argon2id$v=19$m=65536,t=3,p=4$ybPCHcSIE7lAtUEX1E6VtA$H+GIv0PtCEI2MBs5sixbGBurmCknBWVSAoDJ0MYgpkg
+api_upload_max_size_mb: 100
+app.contact.dns.domain: mycaldera.caldera
+app.contact.dns.socket: 0.0.0.0:8853
+app.contact.ftp.host: 0.0.0.0
+app.contact.ftp.port: 2222
+app.contact.ftp.pword: caldera
+app.contact.ftp.server.dir: ftp_dir
+app.contact.ftp.user: caldera_user
+app.contact.gist: API_KEY
+app.contact.html: /weather
+app.contact.http: http://0.0.0.0:8888
+app.contact.slack.api_key: SLACK_TOKEN
+app.contact.slack.bot_id: SLACK_BOT_ID
+app.contact.slack.channel_id: SLACK_CHANNEL_ID
+app.contact.tcp: 0.0.0.0:7010
+app.contact.tunnel.ssh.host_key_file: REPLACE_WITH_KEY_FILE_PATH
+app.contact.tunnel.ssh.host_key_passphrase: REPLACE_WITH_KEY_FILE_PASSPHRASE
+app.contact.tunnel.ssh.socket: 0.0.0.0:8022
+app.contact.tunnel.ssh.user_name: sandcat
+app.contact.tunnel.ssh.user_password: s4ndc4t!
+app.contact.udp: 0.0.0.0:7011
+app.contact.websocket: 0.0.0.0:7012
+auth.login.handler.module: default
+client_max_size_mb: 1
+crypt_salt: REPLACE_WITH_RANDOM_VALUE
+encryption_key: ADMIN123
+exfil_dir: /tmp/caldera
+host: 0.0.0.0
+objects.planners.default: atomic
+plugins:
+- ssl
+- manx
+- sandcat
+port: 8888
+reachable_host_traits:
+- remote.host.fqdn
+- remote.host.ip
+reports_dir: /tmp
+requirements:
+  go:
+    command: go version
+    type: installed_program
+    version: 1.19
+  python:
+    attr: version
+    module: sys
+    type: python_module
+    version: 3.9.0
+session_expiration_days: 7
+users:
+  blue:
+    blue: $argon2id$v=19$m=65536,t=3,p=4$J9+I5UZ3zO4u2PhIFiOjyQ$+No+ho9vTGiw2autHcy3lqGWxcGSKW+SvNHYmW/3o5c
+    password: $argon2id$v=19$m=65536,t=3,p=4$vENk7XN9U3yLUgb+mY/5fA$bRskaAUK4KMK2zHx4+VwcSAjhOtwW9XkDdJUg+uki7A
+  red:
+    admin: $argon2id$v=19$m=65536,t=3,p=4$2uxmAbg6GKaBLJYKoN2NfA$WYqWhe0USEaBD8unkM5EEZzeZjnf9tJxMWYwNNCfNn4
+    password: $argon2id$v=19$m=65536,t=3,p=4$qdraswkaHamWW8BVD3Oo3w$WWBRoePnbXCTHFSgQlLPdv57AFmjyt75/1h8umYorNs
+    red: $argon2id$v=19$m=65536,t=3,p=4$DUNZusMAU0jk13sT6XqAPg$LQuoOHUr8ZYwod0oG3OdiwsWGBfYkJ7ELHaa0J25r9A
