@@ -2,7 +2,12 @@ FROM ubuntu:22.04
 
 # Install netcat (using openbsd version)
 RUN apt-get update && \
-    apt-get install -y netcat-openbsd && \
+    apt-get install -y netcat-openbsd \
+      iputils-ping \
+      python3 \
+      python3-pip \
+      net-tools \
+      golang-go && \
     rm -rf /var/lib/apt/lists/*
 
 # Expose the port netcat will listen on
